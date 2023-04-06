@@ -1,0 +1,57 @@
+body{
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h2{
+    font-size: 36px;
+    font-weight: 900;
+    color: #1f2937;
+}
+.card-content{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px;
+}
+.item{
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    text-align: center;
+}
+.box{
+    border: solid #3882f6;
+    width: 150px;
+    height: 150px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+img{
+    width: 130px;
+    height: 130px;
+}
+
+.results{
+    background-color: #e5e7eb;
+    flex-shrink: 1;
+    padding: 60px;
+    flex-direction: column;
+    text-align: center;
+}
+#overall{
+    font-size: 24px;
+    font-weight: bold;
+}
+#gameOver{
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff0000;
+}

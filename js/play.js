@@ -1,40 +1,65 @@
-const choices = ["rock","paper","scissors"];
-function getComputerChoice(){
-let computerChoice = choices[Math.floor(Math.random() * 3)];
-console.log(computerChoice);
-return computerChoice;
-}
-
-function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
-    let result;
-    if(playerSelection === computerSelection){
-        result = "It's a draw!";
-    }else if(playerSelection === "rock" && computerSelection === "paper"){
-        result = "You Lose! Paper beats Rock";
-    }else if(playerSelection === "scissors" && computerSelection === "paper"){
-        result = "You Win! Scissors beats Rock";
-    }else if(playerSelection === "paper" && computerSelection === "rock"){
-        result = "You Win! Paper beats Rock";
-    }else if(playerSelection === "scissors" && computerSelection === "rock"){
-        result = "You Lose! Rock beats Scissors";
-    }else if(playerSelection === "paper" && computerSelection === "scissors"){
-        result = "You Lose! Scissors beats Paper";
-    }else if(playerSelection === "rock" && computerSelection === "scissors"){
-        result = "You Win! Rock beats Scissors";
-    }else{
-        result = "Invalid choice";
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const results = document.querySelector('#results');
+const overall = document.querySelector('#overall');
+const gameOver = document.querySelector('#gameOver');
+rock.addEventListener('click', function (e) {
+    game("rock");
+  });
+  paper.addEventListener('click', function (e) {
+    game("paper");
+  });
+  scissors.addEventListener('click', function (e) {
+    game("scissors");
+  });
+  const choices = ["rock","paper","scissors"];
+  let you = 0;
+  let computer = 0;
+  function getComputerChoice(){
+    let computerChoice = choices[Math.floor(Math.random() * 3)];
+    //console.log(computerChoice);
+    return computerChoice;
     }
-    return result;
-}
-//const playerSelection = "rock";
-//const computerSelection = getComputerChoice();
-//console.log(playRound(playerSelection,computerSelection));
 
-function game(){
-    for(let i=1;i<=5;i++){
-        let playerSelection = prompt("Enter your Choice");
-        console.log(playRound(playerSelection,getComputerChoice()));
+    function playRound(playerSelection, computerSelection){
+        playerSelection = playerSelection.toLowerCase();
+        let result;
+        if(playerSelection === computerSelection){
+            result = "It's a draw!";
+            you++;
+            computer++;
+        }else if(playerSelection === "rock" && computerSelection === "paper"){
+            result = "You Lose! Paper beats Rock";
+            computer++;
+        }else if(playerSelection === "scissors" && computerSelection === "paper"){
+            result = "You Win! Scissors beats Rock";
+            you++;
+        }else if(playerSelection === "paper" && computerSelection === "rock"){
+            result = "You Win! Paper beats Rock";
+            you++;
+        }else if(playerSelection === "scissors" && computerSelection === "rock"){
+            result = "You Lose! Rock beats Scissors";
+            computer++;
+        }else if(playerSelection === "paper" && computerSelection === "scissors"){
+            result = "You Lose! Scissors beats Paper";
+            computer++;
+        }else if(playerSelection === "rock" && computerSelection === "scissors"){
+            result = "You Win! Rock beats Scissors";
+            you++;
+        }else{
+            result = "Invalid choice";
+        }
+        return result;
     }
-}
-game();
+    let i = 0;
+    function game(playerSelection){
+        if(i<5){
+            results.textContent = playRound(playerSelection,getComputerChoice());
+            i++;
+            overall.textContent = `You: ${you} Computer: ${computer}`;
+        }else{
+            gameOver.textContent = "Game Over!"
+        }
+    }
+    
