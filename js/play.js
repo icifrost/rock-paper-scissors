@@ -4,6 +4,7 @@ const scissors = document.querySelector('#scissors');
 const results = document.querySelector('#results');
 const overall = document.querySelector('#overall');
 const gameOver = document.querySelector('#gameOver');
+const final = document.querySelector('#final');
 rock.addEventListener('click', function (e) {
     game("rock");
   });
@@ -59,7 +60,16 @@ rock.addEventListener('click', function (e) {
             i++;
             overall.textContent = `You: ${you} Computer: ${computer}`;
         }else{
-            gameOver.textContent = "Game Over!"
+            gameOver.textContent = "Game Over!";
+            if(you > computer){
+                final.style.color = 'green';
+                final.textContent = "You Win!";
+            }else if (you === computer){
+                final.style.color = 'blue';
+                final.textContent = "It's a Draw!";
+            }else{
+                final.textContent = "You Lose!";
+            }
         }
     }
     
